@@ -1,58 +1,69 @@
+# React + TypeScript + Vite
 
-# NavyBitsChallenge
-This is a React and TypeScript application that brings the classic Sudoku puzzle to the browser. It allows users to generate valid Sudoku puzzles at three difficulty levels (Easy, Medium, Hard) using a backtracking algorithm, fill in numbers with real-time conflict detection, request hints, and even solve the puzzle automatically
-Sudoku Game React Component
-This project implements a  Sudoku game in React and TypeScript. It features:
-Interactive Board: A 9×9 Sudoku grid that users can fill manually.
-Real‐time Conflict Detection: Highlights cells that violate Sudoku rules (duplicate in row, column, or 3×3 box).
-Random Puzzle Generator: Generates a complete, valid Sudoku solution using a backtracking algorithm, then removes numbers to create a puzzle.
-Difficulty Levels: Easy, Medium, and Hard modes that control how many cells are blanked out.
-Controls:
-Radio Buttons: Select difficulty and automatically generate a new puzzle.
-Clear Board: Reset all cells filled by the player to empty.
-Check Solution: Validate the current board and report if there are mistakes.
-Usage
-Select Difficulty using the radio buttons: Easy, Medium, or Hard.
-Generate Puzzle: A new Sudoku puzzle is created automatically after selecting a difficulty.
-Fill the Board: Click on any empty cell and enter a digit (1–9).
-Conflict Highlighting: Any invalid entry (duplicate in the same row/column/3×3 block) will be marked.
-Check Solution: Click “Check solution” to verify if the entire board is solved correctly.
-Clear Board: Click “Clear board” to reset the puzzle and start over.
-Key Components
-GameLogic
-State:
-board: string[][] — the current 9×9 grid state.
-difficulty: "easy" | "medium" | "hard" — selected difficulty level.
-Functions:
-hasConflict(row, col, value, board) — checks for duplicates in the row, column, and 3×3 block.
-fillCell(pos) — a recursive backtracking function that fills the entire board with a valid solution.
-generateRandomBoard() — calls fillCell, then blanks out cells based on difficulty.
-clearBoard() — resets the board to all empty strings.
-isBoardValid() — verifies that every cell is non-empty and conflict-free.
-setDifficulty(level, board) — removes a number of cells to create a puzzle for the chosen difficulty.
-Boards
-Renders the 9×9 grid using a nested array map.
-Each cell is an <input> with:
-value bound to board[row][col].
-onChange event to update its state.
-Dynamic class names to highlight thick borders (3×3 blocks) and conflicts.
-Algorithm Details
-Backtracking Generator
-Empty Board: Start with a 9×9 array of empty strings.
-Shuffle Digits: Randomize the array ['1',…,'9'] for each cell (Fisher–Yates shuffle).
-Recursive Fill:
-Place a candidate digit if it doesn’t conflict.
-Recurse to the next cell (pos + 1).
-If stuck, clear the cell and backtrack.
-Puzzle Creation: After obtaining a full valid solution, blank out n cells according to the difficulty level.
-Customization
-Adjust Difficulty: Modify the blank counts in SetDifficulty:
-switch (dif) {
-  case 'easy': d = 20; break;
-  case 'medium': d = 35; break;
-  case 'hard': d = 65; break;
-}
-Styling: Update CSS classes in sudoku-cell, border‑*-bold, and conflict-cell to change appearance and some animation.
-Acknowledgements:
-This project was developed by the me with guidance and code suggestions provided by OpenAI's ChatGPT,and many sites like https://www.typescriptlang.org/,https://reactjs.org/,and https://vitejs.dev/. All design decisions, integration, and customizations are implemented by the me.
-This project was developed by the me with guidance and code suggestions provided by OpenAI's ChatGPT,and many sites like https://www.typescriptlang.org/ ,https://reactjs.org/  ,and https://vitejs.dev/  . All design decisions, integration, and customizations are implemented by the me.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

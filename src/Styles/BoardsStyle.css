@@ -1,0 +1,293 @@
+.sudoku-board {
+  display: inline-block;
+  border: 2px solid rgb(168, 38, 255);
+  align-items: center;
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.radioGroup {
+  display: inline;
+  align-items: center;
+}
+
+.radioGroup input {
+  margin-left: 10px;
+}
+
+.sudoku-row {
+  display: flex;
+}
+
+.sudoku-cell {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.border-left-bold {
+  border-left: 2px solid rgb(168, 38, 255);
+}
+
+.border-right-bold {
+  border-right: 2px solid rgb(168, 38, 255);
+}
+
+.border-top-bold {
+  border-top: 2px solid rgb(168, 38, 255);
+}
+
+.border-bottom-bold {
+  border-bottom: 2px solid rgb(168, 38, 255);
+}
+
+.conflict-cell {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+.btn_validBoard {
+  margin-left: 35%;
+  margin-top: 5%;
+}
+
+.clearBoard {
+  background-color: gray;
+  border-radius: 15%;
+  width: 17%;
+  border-color: gray;
+  padding: 0.75%;
+  margin-left: 5%;
+  margin-top: 5%;
+
+}
+
+.btnDiv {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100wh;
+}
+
+.solveBoard {
+  background-color: gray;
+  border-radius: 15%;
+  width: 17%;
+  border-color: gray;
+  padding: 0.75%;
+  margin-left: 5%;
+  margin-top: 5%;
+
+}
+
+.hintCell {
+  background-color: gray;
+  border-radius: 15%;
+  width: 17%;
+  border-color: gray;
+  padding: 0.75%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.sudoku-row {
+  display: flex;
+}
+
+.sudoku-cell {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 20px;
+  border: 1px solid rgb(192, 98, 254);
+  outline: none;
+  animation: fillCell 0.8s ease-out;
+}
+
+@keyframes fillCell {
+  0% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.border-left-bold {
+  border-left: 2px solid black;
+}
+
+.border-right-bold {
+  border-right: 2px solid black;
+}
+
+.border-top-bold {
+  border-top: 2px solid black;
+}
+
+.border-bottom-bold {
+  border-bottom: 2px solid black;
+}
+
+.conflict-cell {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+.btn_validBoard {
+  background-color: gray;
+  border-radius: 15%;
+  width: 17%;
+  border-color: gray;
+  padding: 0.75%;
+  margin-left: 5%;
+  margin-top: 5%;
+
+}
+
+.clearBoard {
+  background-color: gray;
+  border-radius: 15%;
+  width: 17%;
+  border-color: gray;
+  padding: 0.75%;
+  margin-left: 5%;
+  margin-top: 5%;
+
+}
+
+.btnDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solveBoard {
+  background-color: gray;
+  border-radius: 15%;
+  width: 17%;
+  border-color: gray;
+  padding: 0.75%;
+  margin-left: 5%;
+  margin-top: 5%;
+
+}
+
+.BtnHint,
+.BtnCheck,
+.BtnClearBoard,
+.solveBoard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  border: none;
+  margin: 10px;
+  padding: 10px;
+  background-color: rgb(168, 38, 255);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px rgb(140, 32, 212);
+  transition-duration: .3s;
+}
+
+.BtnHint {
+  width: 100px;
+}
+
+.BtnClearBoard {
+  width: 150px;
+}
+
+.BtnCheck {
+  width: 170px;
+}
+
+.solveBoard {
+  width: 170px;
+}
+
+.svg,
+.svg1,
+.svg2,
+.svg3 {
+  width: 50px;
+  height: 45px;
+  position: absolute;
+  right: 0;
+  transition-duration: .3s;
+}
+
+.svg3 {
+  width: 40px;
+  right: 3px;
+}
+
+.BtnHint:hover,
+.BtnCheck:hover,
+.BtnClearBoard:hover,
+.solveBoard:hover {
+  color: transparent;
+}
+
+.BtnHint:hover svg,
+.BtnCheck:hover .svg1,
+.BtnClearBoard:hover .svg2,
+.solveBoard:hover svg {
+  right: 37%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.BtnHint:hover svg {
+  right: 25%;
+}
+
+.BtnClearBoard:hover .svg2 {
+  right: 35%;
+}
+
+.BtnCheck:hover .svg1 {
+  right: 35%;
+}
+
+.BtnHint:hover svg path {
+  fill: gold;
+}
+
+.BtnCheck:hover svg .path0 {
+  fill: gold;
+}
+
+.BtnCheck:hover svg .path1 {
+  fill: green;
+}
+
+.BtnCheck:hover svg .path2 {
+  fill: rgba(252, 1, 1, 0.545);
+}
+
+.BtnHint:active,
+.BtnCheck:active,
+.BtnClearBoard:active,
+.solveBoard:active {
+  transform: translate(3px, 3px);
+  transition-duration: .3s;
+  box-shadow: 2px 2px 0px rgb(140, 32, 212);
+}
+.hintedCell{
+  background-color: violet;
+}
